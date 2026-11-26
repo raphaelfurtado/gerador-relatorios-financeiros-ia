@@ -1,0 +1,20 @@
+{
+  "empresa": "Clínica Sorriso Pleno",
+  "setor": "Saúde (odontologia)",
+  "periodo": "2026-10",
+  "moeda": "BRL",
+  "publico_alvo": "diretoria",
+  "receitas": {
+    "consultas": 38400.00,
+    "procedimentos": 72150.00,
+    "convenios": 25600.00
+  },
+  "despesas": {
+    "pessoal": 51200.00,
+    "materiais": 18750.00,
+    "aluguel": 12000.00,
+    "leasing_de_equipamentos": 8900.00,
+    "impostos": 14980.00
+  },
+  "observacoes": "Primeiro mês no novo sistema de gestão; o histórico dos meses anteriores não foi migrado."
+}

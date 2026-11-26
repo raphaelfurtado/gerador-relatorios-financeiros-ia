@@ -1,0 +1,20 @@
+{
+  "empresa": "CloudPonto",
+  "setor": "Software (SaaS B2B)",
+  "periodo": "2026-10",
+  "moeda": "USD",
+  "publico_alvo": "investidores",
+  "receitas": {
+    "assinaturas": 184500.00,
+    "servicos_de_implantacao": 22300.00
+  },
+  "despesas": {
+    "pessoal": 121400.00,
+    "infraestrutura_cloud": 31250.00,
+    "vendas_e_marketing": 48600.00,
+    "administrativo_geral": 15800.00
+  },
+  "periodo_anterior": { "receita_total": 191200.00, "despesa_total": 214900.00 },
+  "meta_receita": 200000.00,
+  "observacoes": "A receita recorrente mensal cresceu no mês. A empresa está em fase de crescimento com queima de caixa planejada."
+}

@@ -1,0 +1,21 @@
+{
+  "empresa": "Agência Pixel Norte",
+  "setor": "Serviços de marketing",
+  "periodo": "2026-10",
+  "moeda": "BRL",
+  "publico_alvo": "gestores",
+  "receitas": {
+    "fees_mensais": 62000.00,
+    "projetos_avulsos": 8500.00
+  },
+  "despesas": {
+    "pessoal": 54800.00,
+    "softwares_e_licencas": 7200.00,
+    "aluguel": 6800.00,
+    "freelancers": 9600.00,
+    "impostos": 5640.00
+  },
+  "periodo_anterior": { "receita_total": 81200.00, "despesa_total": 79300.00 },
+  "meta_receita": 85000.00,
+  "observacoes": "Perda de um cliente de fee mensal (R$ 11 mil por mês) no fim de setembro."
+}

@@ -1,0 +1,23 @@
+{
+  "empresa": "Padaria Pão Dourado",
+  "setor": "Varejo alimentício",
+  "periodo": "2026-10",
+  "moeda": "BRL",
+  "publico_alvo": "diretoria",
+  "receitas": {
+    "vendas_balcao": 98450.00,
+    "encomendas": 21300.00,
+    "delivery": 15780.50
+  },
+  "despesas": {
+    "insumos": 41200.00,
+    "pessoal": 38900.00,
+    "aluguel": 9500.00,
+    "energia_e_gas": 6340.20,
+    "marketing": 3100.00,
+    "impostos": 12890.30
+  },
+  "periodo_anterior": { "receita_total": 128900.00, "despesa_total": 108450.00 },
+  "meta_receita": 140000.00,
+  "observacoes": "Outubro teve um feriado prolongado. O delivery cresceu após a parceria com um aplicativo de entregas."
+}
