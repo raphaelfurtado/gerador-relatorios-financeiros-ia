@@ -1,0 +1,54 @@
+{
+  "versao_prompt": "v7",
+  "modelo": "gpt-4o-mini",
+  "empresa": "Padaria Pão Dourado",
+  "setor": "Varejo alimentício",
+  "periodo": "10/2026",
+  "moeda": "BRL",
+  "publico_alvo": "diretoria",
+  "indicadores": {
+    "receita_total": 135530.5,
+    "despesa_total": 111930.5,
+    "resultado": 23600,
+    "margem_liquida_pct": 17.41,
+    "variacao_receita_pct": 5.14,
+    "variacao_despesa_pct": 3.21,
+    "atingimento_meta_pct": 96.81,
+    "maior_despesa": {
+      "item": "insumos",
+      "valor": 41200,
+      "participacao_pct": 36.81
+    }
+  },
+  "indicadores_formatados": {
+    "Receita total": "R$ 135.530,50",
+    "Despesa total": "R$ 111.930,50",
+    "Resultado": "R$ 23.600,00",
+    "Margem líquida": "17,4%",
+    "Variação da receita vs. mês anterior": "+5,1%",
+    "Variação da despesa vs. mês anterior": "+3,2%",
+    "Atingimento da meta de receita": "96,8%",
+    "Maior despesa": "Insumos (36,8% da despesa total)"
+  },
+  "resumo_executivo": "No mês de outubro, a Padaria Pão Dourado apresentou um resultado positivo de R$ 23.600,00. A receita total foi de R$ 135.530,50, com um atingimento da meta de receita de 96,8%.",
+  "destaques_positivos": [
+    "A receita total aumentou 5,1% em relação ao mês anterior.",
+    "A margem líquida foi de 17,4%, indicando uma boa eficiência operacional.",
+    "O delivery cresceu após a parceria com um aplicativo de entregas."
+  ],
+  "pontos_de_atencao": [
+    "O atingimento da meta de receita foi de 96,8%, indicando que a meta não foi alcançada.",
+    "As despesas totais aumentaram 3,2% em relação ao mês anterior.",
+    "A maior despesa foi com insumos, representando 36,8% da despesa total."
+  ],
+  "recomendacoes": [
+    "Avaliar estratégias para aumentar as vendas e atingir a meta de receita no próximo mês.",
+    "Monitorar de perto os custos com insumos para identificar oportunidades de redução.",
+    "Considerar ações de marketing para impulsionar as vendas, especialmente em períodos de feriados."
+  ],
+  "observacoes": {
+    "campos_ausentes": [],
+    "instrucoes_em_dados": null,
+    "valores_atipicos": null
+  }
+}

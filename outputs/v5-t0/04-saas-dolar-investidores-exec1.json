@@ -1,0 +1,54 @@
+{
+  "versao_prompt": "v5",
+  "modelo": "gpt-4o-mini",
+  "empresa": "CloudPonto",
+  "setor": "Software (SaaS B2B)",
+  "periodo": "10/2026",
+  "moeda": "USD",
+  "publico_alvo": "investidores",
+  "indicadores": {
+    "receita_total": 206800,
+    "despesa_total": 217050,
+    "resultado": -10250,
+    "margem_liquida_pct": -4.96,
+    "variacao_receita_pct": 8.16,
+    "variacao_despesa_pct": 1,
+    "atingimento_meta_pct": 103.4,
+    "maior_despesa": {
+      "item": "pessoal",
+      "valor": 121400,
+      "participacao_pct": 55.93
+    }
+  },
+  "indicadores_formatados": {
+    "Receita total": "US$ 206.800,00",
+    "Despesa total": "US$ 217.050,00",
+    "Resultado": "-US$ 10.250,00",
+    "Margem líquida": "-5,0%",
+    "Variação da receita vs. mês anterior": "+8,2%",
+    "Variação da despesa vs. mês anterior": "+1,0%",
+    "Atingimento da meta de receita": "103,4%",
+    "Maior despesa": "Pessoal (55,9% da despesa total)"
+  },
+  "resumo_executivo": "No mês de outubro de 2026, a CloudPonto apresentou um prejuízo de US$ 10.250,00. A receita total foi de US$ 206.800,00, superando a meta estabelecida.",
+  "destaques_positivos": [
+    "Atingimento da meta de receita em 103,4%.",
+    "Crescimento de 8,2% na receita total em relação ao mês anterior.",
+    "A receita recorrente mensal continua em crescimento."
+  ],
+  "pontos_de_atencao": [
+    "O resultado negativo indica um prejuízo que deve ser monitorado.",
+    "A despesa total aumentou 1,0% em relação ao mês anterior.",
+    "A maior despesa continua sendo com pessoal, representando 55,9% da despesa total."
+  ],
+  "recomendacoes": [
+    "Avaliar estratégias para redução de custos, especialmente na área de pessoal.",
+    "Continuar monitorando o crescimento da receita para garantir a sustentabilidade.",
+    "Revisar o planejamento financeiro para alinhar a queima de caixa com as expectativas de crescimento."
+  ],
+  "observacoes": {
+    "campos_ausentes": [],
+    "instrucoes_em_dados": null,
+    "valores_atipicos": null
+  }
+}

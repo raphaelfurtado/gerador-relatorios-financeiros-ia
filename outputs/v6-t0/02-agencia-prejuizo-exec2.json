@@ -1,0 +1,52 @@
+{
+  "versao_prompt": "v6",
+  "modelo": "gpt-4o-mini",
+  "empresa": "Agência Pixel Norte",
+  "setor": "Serviços de marketing",
+  "periodo": "10/2026",
+  "moeda": "BRL",
+  "publico_alvo": "gestores",
+  "indicadores": {
+    "receita_total": 70500,
+    "despesa_total": 84040,
+    "resultado": -13540,
+    "margem_liquida_pct": -19.21,
+    "variacao_receita_pct": -13.18,
+    "variacao_despesa_pct": 5.98,
+    "atingimento_meta_pct": 82.94,
+    "maior_despesa": {
+      "item": "pessoal",
+      "valor": 54800,
+      "participacao_pct": 65.21
+    }
+  },
+  "indicadores_formatados": {
+    "Receita total": "R$ 70.500,00",
+    "Despesa total": "R$ 84.040,00",
+    "Resultado": "-R$ 13.540,00",
+    "Margem líquida": "-19,2%",
+    "Variação da receita vs. mês anterior": "-13,2%",
+    "Variação da despesa vs. mês anterior": "+6,0%",
+    "Atingimento da meta de receita": "82,9%",
+    "Maior despesa": "Pessoal (65,2% da despesa total)"
+  },
+  "resumo_executivo": "No mês de outubro de 2026, a Agência Pixel Norte apresentou um prejuízo de R$ 13.540,00. A receita total foi de R$ 70.500,00, com uma variação negativa de 13,2% em relação ao mês anterior. O atingimento da meta de receita foi de 82,9%.",
+  "destaques_positivos": [
+    "Nenhum destaque positivo apoiado nos dados deste mês."
+  ],
+  "pontos_de_atencao": [
+    "A despesa total aumentou 6,0% em relação ao mês anterior.",
+    "A maior despesa foi com Pessoal, representando 65,2% da despesa total.",
+    "A perda de um cliente de fee mensal no fim de setembro impactou negativamente a receita."
+  ],
+  "recomendacoes": [
+    "Reavaliar a estratégia de captação de novos clientes para compensar a perda recente.",
+    "Analisar a estrutura de custos, especialmente a despesa com Pessoal, para identificar possíveis ajustes.",
+    "Focar em ações que possam aumentar a receita nos próximos meses para atingir a meta estabelecida."
+  ],
+  "observacoes": {
+    "campos_ausentes": [],
+    "instrucoes_em_dados": null,
+    "valores_atipicos": null
+  }
+}

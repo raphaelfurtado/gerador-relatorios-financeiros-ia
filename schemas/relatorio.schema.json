@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "relatorio.schema.json",
+  "title": "Relatório financeiro mensal",
+  "description": "Contrato de saída da função gerar_relatorio (prompt v5). Textos vêm do LLM; números, cabeçalho e campos ausentes vêm do código.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["versao_prompt", "modelo", "empresa", "setor", "periodo", "moeda", "publico_alvo", "indicadores", "indicadores_formatados", "resumo_executivo", "destaques_positivos", "pontos_de_atencao", "recomendacoes", "observacoes"],
+  "properties": {
+    "versao_prompt": { "type": "string" },
+    "modelo": { "type": "string" },
+    "empresa": { "type": "string", "minLength": 1 },
+    "setor": { "type": "string", "minLength": 1 },
+    "periodo": { "type": "string", "pattern": "^[0-9]{2}/[0-9]{4}$", "description": "MM/AAAA" },
+    "moeda": { "enum": ["BRL", "USD", "EUR"] },
+    "publico_alvo": { "enum": ["diretoria", "investidores", "gestores"] },
+    "indicadores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receita_total", "despesa_total", "resultado", "margem_liquida_pct", "variacao_receita_pct", "variacao_despesa_pct", "atingimento_meta_pct", "maior_despesa"],
+      "properties": {
+        "receita_total": { "type": "number" },
+        "despesa_total": { "type": "number" },
+        "resultado": { "type": "number" },
+        "margem_liquida_pct": { "type": ["number", "null"] },
+        "variacao_receita_pct": { "type": ["number", "null"], "description": "null quando falta periodo_anterior" },
+        "variacao_despesa_pct": { "type": ["number", "null"], "description": "null quando falta periodo_anterior" },
+        "atingimento_meta_pct": { "type": ["number", "null"], "description": "null quando falta meta_receita" },
+        "maior_despesa": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["item", "valor", "participacao_pct"],
+          "properties": {
+            "item": { "type": "string" },
+            "valor": { "type": "number" },
+            "participacao_pct": { "type": "number" }
+          }
+        }
+      }
+    },
+    "indicadores_formatados": {
+      "type": "object",
+      "description": "Os mesmos indicadores no padrão brasileiro, prontos para exibição",
+      "additionalProperties": { "type": "string" },
+      "minProperties": 8,
+      "maxProperties": 8
+    },
+    "resumo_executivo": { "type": "string", "minLength": 1 },
+    "destaques_positivos": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "minLength": 1 } },
+    "pontos_de_atencao": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "minLength": 1 } },
+    "recomendacoes": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "type": "string", "minLength": 1 } },
+    "observacoes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["campos_ausentes", "instrucoes_em_dados", "valores_atipicos"],
+      "properties": {
+        "campos_ausentes": { "type": "array", "items": { "enum": ["periodo_anterior", "meta_receita"] }, "uniqueItems": true },
+        "instrucoes_em_dados": { "type": ["string", "null"] },
+        "valores_atipicos": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

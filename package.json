@@ -1,0 +1,14 @@
+{
+  "name": "gerador-relatorios-financeiros-ia",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Prompt estruturado como função reutilizável para relatórios financeiros mensais",
+  "scripts": {
+    "test": "node run_tests.mjs",
+    "gerar": "node gerar.mjs"
+  },
+  "dependencies": {
+    "ajv": "^8.20.0"
+  }
+}

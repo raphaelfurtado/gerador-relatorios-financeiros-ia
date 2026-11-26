@@ -1,4 +1,5 @@
-// Micro-capstone M2D1 — roda cada configuração de prompt × 5 inputs × 3 execuções, valida e gera as tabelas.
+// Fase 1 (Markdown): prompt genérico e versões v1 a v4 × 5 inputs × 3 execuções; valida e gera results/tabelas.md.
+// A fase 2 (v5 a v7, saída JSON com schema) é testada pelo run_tests.mjs.
 // Uso: node run.mjs                 (roda o que falta e gera o relatório)
 //      node run.mjs --so-relatorio  (só recalcula as tabelas a partir de results/raw.json)
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
@@ -18,7 +19,7 @@ export const CONFIGS = [
   { id: "v3-t1", prompt: "estruturado-v3.md", temperatura: 1, descricao: "Prompt estruturado v3 (+ campos ausentes detectados em código), temperatura 1" },
   { id: "v3-t0", prompt: "estruturado-v3.md", temperatura: 0, descricao: "Prompt estruturado v3 (+ campos ausentes detectados em código), temperatura 0" },
   { id: "v4-t1", prompt: "estruturado-v4.md", temperatura: 1, descricao: "Prompt estruturado v4 (+ seção 6 com três campos fixos), temperatura 1" },
-  { id: "v4-t0", prompt: "estruturado-v4.md", temperatura: 0, descricao: "Prompt estruturado v4 (+ seção 6 com três campos fixos), temperatura 0 — VERSÃO FINAL" },
+  { id: "v4-t0", prompt: "estruturado-v4.md", temperatura: 0, descricao: "Prompt estruturado v4 (+ seção 6 com três campos fixos), temperatura 0 — final da fase Markdown" },
 ];
 export const FINAL = "v4-t0";
 const EXECUCOES = 3;
@@ -155,16 +156,5 @@ for (const inp of INPUTS) {
   md += `\n`;
 }
 writeFileSync(path.join(OUT, "tabelas.md"), md);
-
-// Exemplos de execução (configuração final, execução 1 de cada input)
-const cfgFinal = CONFIGS.find((c) => c.id === FINAL);
-let ex = `# 5 exemplos de execução\n\nGerado por \`run.mjs\`. Prompt: [\`prompts/${cfgFinal.prompt}\`](prompts/${cfgFinal.prompt}), modelo \`${MODELO}\`, temperatura ${cfgFinal.temperatura}. Execução 1 de cada input; as 3 execuções de cada um estão em [\`outputs/${FINAL}/\`](outputs/${FINAL}/).\n\n`;
-INPUTS.forEach((inp, i) => {
-  const x = aval[FINAL][inp.id][0];
-  const ok = (l) => (l.length ? `❌ ${l.join("; ")}` : "✅");
-  ex += `## Exemplo ${i + 1} — ${CASOS[inp.id]?.cenario ?? inp.id}\n\n**O que prova:** ${CASOS[inp.id]?.prova}. **Validação:** formato ${ok(x.formato)} · números ${ok(x.numeros)} · caso ${ok(x.caso)}\n\n`;
-  ex += `<details><summary>Input (<code>inputs/${inp.id}.json</code>)</summary>\n\n\`\`\`json\n${JSON.stringify(inp.dados, null, 2)}\n\`\`\`\n\n</details>\n\n`;
-  ex += `**Output:**\n\n\`\`\`markdown\n${x.texto.trim()}\n\`\`\`\n\n`;
-});
-writeFileSync(path.join(RAIZ, "EXEMPLOS.md"), ex);
-console.log("results/tabelas.md e EXEMPLOS.md gerados.");
+// O EXEMPLOS.md é gerado pelo run_tests.mjs, a partir do prompt final (v7, saída JSON).
+console.log("results/tabelas.md gerado.");

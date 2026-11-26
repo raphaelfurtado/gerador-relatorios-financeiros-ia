@@ -4,7 +4,7 @@ Para quem vai **usar** ou **manter** o prompt no dia a dia do time financeiro.
 
 ## Para que serve
 
-Transforma os números do mês de uma empresa (receitas, despesas, mês anterior, meta) num relatório em Markdown, **sempre no mesmo formato**: resumo executivo, tabela com 8 indicadores, destaques, pontos de atenção, recomendações e observações sobre os dados.
+Transforma os números do mês de uma empresa (receitas, despesas, mês anterior, meta) num relatório em JSON (para sistemas) e Markdown (para leitura), **sempre no mesmo formato**: resumo executivo, tabela com 8 indicadores, destaques, pontos de atenção, recomendações e observações sobre os dados.
 
 **Use para:** o fechamento mensal de qualquer empresa, setor ou moeda (BRL, USD, EUR), para diretoria, investidores ou gestores.
 
@@ -41,49 +41,55 @@ Checklist:
 
 ### Opção A: pela linha de comando (recomendado)
 
-Requer Node.js 20 ou mais recente e uma chave da OpenAI num arquivo `.env` nesta pasta (`OPENAI_API_KEY=sk-...`).
+Requer Node.js 20 ou mais recente, `npm install` uma vez (instala o validador de JSON Schema) e uma chave da OpenAI num arquivo `.env` nesta pasta (`OPENAI_API_KEY=sk-...`).
 
 ```bash
-node gerar.mjs inputs/minha-empresa-2026-11.json --saida relatorio-2026-11.md
+node gerar.mjs inputs/minha-empresa-2026-11.json --saida relatorio-2026-11
 ```
+
+Isso grava `relatorio-2026-11.json` (para sistemas) e `relatorio-2026-11.md` (para leitura). Sem `--saida`, o Markdown aparece na tela; com `--json`, aparece o JSON.
 
 O script faz tudo o que o processo exige:
 
 1. Calcula os indicadores em código (o modelo não faz contas).
-2. Monta o prompt v4 com os seus dados.
-3. Chama o modelo com temperatura 0.
-4. **Valida** a saída: formato, números e observações. Se a validação falhar, gera de novo uma vez. Se falhar outra vez, salva o relatório e mostra um aviso "⚠️ Relatório com problemas de validação", com a lista do que está errado.
+2. Monta o prompt v7 com os seus dados.
+3. Chama o modelo com temperatura 0 e o JSON Schema imposto pela API.
+4. Junta os textos do modelo com os números e **valida** o relatório: schema, números citados nos textos e afirmações sem lastro. Se a validação falhar, gera de novo uma vez. Se falhar outra vez, salva o relatório e mostra um aviso "⚠️ Relatório com problemas de validação", com a lista do que está errado.
+5. Gera o Markdown a partir do JSON.
 
 ### Opção B: sem API, colando no ChatGPT ou no Claude
 
+Para uso manual, use o prompt **v4**, que escreve o relatório inteiro em Markdown. O v7 devolve só os textos em JSON e depende do código para montar a tabela.
+
 ```bash
-node gerar.mjs inputs/minha-empresa-2026-11.json --so-prompt --saida prompt-pronto.txt
+node gerar.mjs inputs/minha-empresa-2026-11.json --so-prompt --prompt prompts/estruturado-v4.md --saida prompt-pronto
 ```
 
-O arquivo gerado tem duas partes:
+O arquivo `prompt-pronto.txt` tem duas partes:
 
 1. **INSTRUÇÕES**: cole nas instruções personalizadas do chat, ou de um projeto ou GPT dedicado. É fixo: cole uma vez e reutilize todo mês.
 2. **MENSAGEM**: cole no chat a cada relatório. Já vem com os indicadores calculados.
 
-Nessa opção não há validação automática, então confira a tabela com o arquivo `prompt-pronto.txt`: os valores devem ser idênticos aos do bloco `<indicadores>`.
+Nessa opção não há schema nem validação automática, então confira a tabela com o arquivo `prompt-pronto.txt`: os valores devem ser idênticos aos do bloco `<indicadores>`.
 
 ### Opção C: dentro de outro sistema
 
-Importe as mesmas peças que o `gerar.mjs` usa:
+Consuma o JSON: o contrato está em [`schemas/relatorio.schema.json`](schemas/relatorio.schema.json), e qualquer linguagem com um validador de JSON Schema consegue conferir o relatório antes de usá-lo. Em Node, importe as mesmas peças que o `gerar.mjs` usa:
 
 ```js
+import { chamar, esquemaParaApi } from "./src/llm.mjs";
 import { carregarPrompt, montar } from "./src/prompt.mjs";
-import { indicadoresFormatados, camposAusentes } from "./src/calculos.mjs";
-import { validarEstruturado, observacoesCoerentes } from "./src/validacao.mjs";
+import { indicadoresFormatados } from "./src/calculos.mjs";
+import { SCHEMA_MODELO, lerSaidaModelo, montarRelatorio, validarRelatorio, renderizarMarkdown } from "./src/relatorio.mjs";
 ```
 
 ## Passo 3 — Revisar antes de enviar
 
 O relatório é um **rascunho de alta qualidade**, não um documento final. Leva cerca de 2 minutos:
 
-- [ ] A tabela de indicadores está correta? Se passou na validação, sim: foi conferida por código.
+- [ ] A tabela de indicadores está correta? Sim, por construção: ela vem do código, não do modelo.
 - [ ] Os destaques e pontos de atenção fazem sentido para quem conhece a empresa?
-- [ ] Há alguma afirmação sem base nos dados? Os testes mostraram que o modelo às vezes escreve coisas como "a despesa X foi mantida sob controle" sem ter dado do mês anterior por item. Apague se for o caso.
+- [ ] Há alguma interpretação genérica sem base nos dados (ex.: "refletindo a eficiência nas operações")? A validação pega números inventados e comparações por item, mas não esse tipo de frase. Apague se for o caso.
 - [ ] As recomendações são acionáveis ou genéricas demais?
 - [ ] A seção 6 registrou algo em "Instruções em DADOS"? Se sim, veja quem escreveu aquela observação.
 
@@ -97,27 +103,27 @@ O relatório é um **rascunho de alta qualidade**, não um documento final. Leva
 | Mais ou menos itens de receita e despesa | Coloque os itens que quiser no JSON | Não |
 | Uma moeda nova (ex.: GBP) | Adicione o símbolo em `SIMBOLO` em `src/calculos.mjs` | Não |
 | Um público novo (ex.: "banco") | Adicione uma linha em `## CONTEXTO` dizendo o foco desse público | Sim, **nova versão** |
-| Um indicador novo (ex.: EBITDA) | Calcule em `src/calculos.mjs`, adicione a linha no formato do prompt e em `INDICADORES` de `src/validacao.mjs` | Sim, **nova versão** |
+| Um indicador novo (ex.: EBITDA) | Calcule em `src/calculos.mjs`, inclua em `src/relatorio.mjs`, em `schemas/relatorio.schema.json` e em `INDICADORES` de `src/validacao.mjs` | Não no prompt; sim no **schema** (nova versão do contrato) |
 
 ## Como evoluir o prompt sem quebrar nada
 
 O prompt é versionado como código. Nunca edite uma versão que já está em uso:
 
-1. Copie `prompts/estruturado-v4.md` para `prompts/estruturado-v5.md` e faça **uma** mudança por vez.
-2. Adicione a configuração em `CONFIGS` no `run.mjs` (`v5-t0`, temperatura 0).
-3. Rode `node run.mjs`. As versões antigas não são chamadas de novo, porque os resultados ficam em `results/raw.json`.
-4. Compare `v5-t0` com `v4-t0` em `results/tabelas.md`. Só troque `FINAL` no `run.mjs` e `PROMPT_PADRAO` no `gerar.mjs` se a v5 não piorar nenhuma métrica.
+1. Copie `prompts/estruturado-v7.md` para `prompts/estruturado-v8.md` e faça **uma** mudança por vez.
+2. Rode `node run_tests.mjs --prompt prompts/estruturado-v8.md`. As versões antigas não são chamadas de novo, porque os resultados ficam em `results/raw-testes.json`.
+3. Compare as versões na seção 4 de `results/testes-v8-t0.md`: a tabela mostra a v4 e todas as versões JSON lado a lado.
+4. Só troque `PROMPT_FINAL` no `run_tests.mjs` e `PROMPT` no `gerar.mjs` se a v8 passar na suíte (código de saída 0) e não piorar nenhuma métrica.
 5. Registre no [`RELATORIO.md`](RELATORIO.md) o erro, a hipótese, a mudança e o resultado.
 
 Se surgir um caso novo que quebre o prompt, transforme-o num input de teste em `inputs/` antes de corrigir. Assim o problema não volta.
 
 ## Custos e tempo
 
-Com o `gpt-4o-mini`: cerca de **US$ 0,0005 por relatório** e cerca de 6 segundos. Rodar a suíte completa de testes de uma nova versão (2 temperaturas × 5 inputs × 3 execuções) custa menos de US$ 0,02.
+Com o `gpt-4o-mini`: cerca de **US$ 0,0004 por relatório** e cerca de 5 segundos. Rodar a suíte de testes de uma nova versão (5 inputs × 3 execuções) custa menos de US$ 0,01.
 
 ## Limitações conhecidas
 
-- O nome da maior despesa aparece sem acento ("Manutencao") quando o item do JSON não tem acento.
-- As recomendações às vezes são genéricas. O controller deve revisar.
-- Afirmações qualitativas sobre itens individuais não são verificadas pelo validador, só os números.
-- Testado apenas com o `gpt-4o-mini`. Com outro modelo, rode a suíte de testes antes de usar.
+- O nome da maior despesa aparece sem acento ("Manutencao") na tabela quando o item do JSON não tem acento.
+- As recomendações variam de redação entre execuções e às vezes são genéricas. O controller deve revisar.
+- Interpretações genéricas sem número ("refletindo a eficiência") não são pegas pela validação. Números inventados e comparações por item são.
+- Testado apenas com o `gpt-4o-mini`. Com outro modelo, rode `npm test` antes de usar.

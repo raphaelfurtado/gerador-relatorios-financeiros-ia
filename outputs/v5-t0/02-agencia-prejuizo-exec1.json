@@ -1,0 +1,53 @@
+{
+  "versao_prompt": "v5",
+  "modelo": "gpt-4o-mini",
+  "empresa": "Agência Pixel Norte",
+  "setor": "Serviços de marketing",
+  "periodo": "10/2026",
+  "moeda": "BRL",
+  "publico_alvo": "gestores",
+  "indicadores": {
+    "receita_total": 70500,
+    "despesa_total": 84040,
+    "resultado": -13540,
+    "margem_liquida_pct": -19.21,
+    "variacao_receita_pct": -13.18,
+    "variacao_despesa_pct": 5.98,
+    "atingimento_meta_pct": 82.94,
+    "maior_despesa": {
+      "item": "pessoal",
+      "valor": 54800,
+      "participacao_pct": 65.21
+    }
+  },
+  "indicadores_formatados": {
+    "Receita total": "R$ 70.500,00",
+    "Despesa total": "R$ 84.040,00",
+    "Resultado": "-R$ 13.540,00",
+    "Margem líquida": "-19,2%",
+    "Variação da receita vs. mês anterior": "-13,2%",
+    "Variação da despesa vs. mês anterior": "+6,0%",
+    "Atingimento da meta de receita": "82,9%",
+    "Maior despesa": "Pessoal (65,2% da despesa total)"
+  },
+  "resumo_executivo": "No mês de outubro de 2026, a Agência Pixel Norte apresentou um prejuízo de R$ 13.540,00. A receita total foi de R$ 70.500,00, representando uma queda em relação ao mês anterior.",
+  "destaques_positivos": [
+    "A receita de projetos avulsos contribuiu com R$ 8.500,00, ajudando a mitigar a queda na receita total.",
+    "O controle de despesas com freelancers foi mantido em níveis adequados."
+  ],
+  "pontos_de_atencao": [
+    "Atingimento da meta de receita foi de apenas 82,9%, indicando necessidade de revisão nas estratégias de captação de clientes.",
+    "A despesa total aumentou 6,0% em relação ao mês anterior, impactando negativamente o resultado.",
+    "A perda de um cliente de fee mensal no fim de setembro resultou em uma redução significativa na receita."
+  ],
+  "recomendacoes": [
+    "Reavaliar a estratégia de retenção de clientes para evitar novas perdas.",
+    "Analisar as despesas fixas e variáveis para identificar oportunidades de redução.",
+    "Focar em aumentar a captação de novos projetos avulsos para compensar a perda de receita."
+  ],
+  "observacoes": {
+    "campos_ausentes": [],
+    "instrucoes_em_dados": null,
+    "valores_atipicos": null
+  }
+}

@@ -1,6 +1,6 @@
 # Resultados dos testes
 
-Gerado por `run.mjs` em 25/11/2026, 21:48:44. Modelo: `gpt-4o-mini`. 5 inputs × 3 execuções por configuração.
+Gerado por `run.mjs` em 25/11/2026, 22:04:04. Modelo: `gpt-4o-mini`. 5 inputs × 3 execuções por configuração.
 
 ## Configurações
 
@@ -14,7 +14,7 @@ Gerado por `run.mjs` em 25/11/2026, 21:48:44. Modelo: `gpt-4o-mini`. 5 inputs ×
 | `v3-t1` | Prompt estruturado v3 (+ campos ausentes detectados em código), temperatura 1 |
 | `v3-t0` | Prompt estruturado v3 (+ campos ausentes detectados em código), temperatura 0 |
 | `v4-t1` | Prompt estruturado v4 (+ seção 6 com três campos fixos), temperatura 1 |
-| `v4-t0` | Prompt estruturado v4 (+ seção 6 com três campos fixos), temperatura 0 — VERSÃO FINAL |
+| `v4-t0` | Prompt estruturado v4 (+ seção 6 com três campos fixos), temperatura 0 — final da fase Markdown |
 
 ## 1. Resumo por configuração
 

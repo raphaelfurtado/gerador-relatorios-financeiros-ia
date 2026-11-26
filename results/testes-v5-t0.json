@@ -1,0 +1,110 @@
+{
+  "config": "v5-t0",
+  "prompt": "prompts/estruturado-v5.md",
+  "modelo": "gpt-4o-mini",
+  "temperatura": 0,
+  "execucoes": 3,
+  "relatorios": 15,
+  "conformidade": {
+    "schemaModelo": 1,
+    "schemaRelatorio": 1,
+    "formato": 1,
+    "numeros": 1,
+    "caso": 1,
+    "sinal": 1,
+    "semAfirmacoes": 0.7333333333333333
+  },
+  "campos_presentes": {
+    "empresa": 1,
+    "setor": 1,
+    "periodo": 1,
+    "moeda": 1,
+    "publico_alvo": 1,
+    "indicadores (8 valores)": 1,
+    "indicadores_formatados (8 valores)": 1,
+    "resumo_executivo": 1,
+    "destaques_positivos (1 a 3)": 1,
+    "pontos_de_atencao (1 a 3)": 1,
+    "recomendacoes (1 a 3)": 1,
+    "observacoes.campos_ausentes": 1,
+    "observacoes.instrucoes_em_dados": 1,
+    "observacoes.valores_atipicos": 1
+  },
+  "numeros_com_lastro": 1,
+  "afirmacoes_sem_lastro": 4,
+  "variabilidade_por_campo": [
+    {
+      "nome": "indicadores",
+      "tipo": "numero",
+      "n": 5,
+      "identico": 5,
+      "sim": 1,
+      "qtdIgual": null,
+      "decisaoIgual": null
+    },
+    {
+      "nome": "observacoes.campos_ausentes",
+      "tipo": "numero",
+      "n": 5,
+      "identico": 5,
+      "sim": 1,
+      "qtdIgual": null,
+      "decisaoIgual": null
+    },
+    {
+      "nome": "resumo_executivo",
+      "tipo": "texto",
+      "n": 5,
+      "identico": 2,
+      "sim": 0.8813661828367712,
+      "qtdIgual": null,
+      "decisaoIgual": null
+    },
+    {
+      "nome": "destaques_positivos",
+      "tipo": "lista",
+      "n": 5,
+      "identico": 2,
+      "sim": 0.8121803352832424,
+      "qtdIgual": 5,
+      "decisaoIgual": null
+    },
+    {
+      "nome": "pontos_de_atencao",
+      "tipo": "lista",
+      "n": 5,
+      "identico": 1,
+      "sim": 0.7322175059819935,
+      "qtdIgual": 3,
+      "decisaoIgual": null
+    },
+    {
+      "nome": "recomendacoes",
+      "tipo": "lista",
+      "n": 5,
+      "identico": 0,
+      "sim": 0.4957110085681514,
+      "qtdIgual": 4,
+      "decisaoIgual": null
+    },
+    {
+      "nome": "observacoes.instrucoes_em_dados",
+      "tipo": "decisao",
+      "n": 5,
+      "identico": 5,
+      "sim": 1,
+      "qtdIgual": null,
+      "decisaoIgual": 5
+    },
+    {
+      "nome": "observacoes.valores_atipicos",
+      "tipo": "decisao",
+      "n": 5,
+      "identico": 4,
+      "sim": 0.9298245614035088,
+      "qtdIgual": null,
+      "decisaoIgual": 5
+    }
+  ],
+  "custo_medio_usd": 0.00040567
+}

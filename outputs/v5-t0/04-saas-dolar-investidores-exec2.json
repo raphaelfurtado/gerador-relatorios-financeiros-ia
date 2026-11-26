@@ -1,0 +1,54 @@
+{
+  "versao_prompt": "v5",
+  "modelo": "gpt-4o-mini",
+  "empresa": "CloudPonto",
+  "setor": "Software (SaaS B2B)",
+  "periodo": "10/2026",
+  "moeda": "USD",
+  "publico_alvo": "investidores",
+  "indicadores": {
+    "receita_total": 206800,
+    "despesa_total": 217050,
+    "resultado": -10250,
+    "margem_liquida_pct": -4.96,
+    "variacao_receita_pct": 8.16,
+    "variacao_despesa_pct": 1,
+    "atingimento_meta_pct": 103.4,
+    "maior_despesa": {
+      "item": "pessoal",
+      "valor": 121400,
+      "participacao_pct": 55.93
+    }
+  },
+  "indicadores_formatados": {
+    "Receita total": "US$ 206.800,00",
+    "Despesa total": "US$ 217.050,00",
+    "Resultado": "-US$ 10.250,00",
+    "Margem líquida": "-5,0%",
+    "Variação da receita vs. mês anterior": "+8,2%",
+    "Variação da despesa vs. mês anterior": "+1,0%",
+    "Atingimento da meta de receita": "103,4%",
+    "Maior despesa": "Pessoal (55,9% da despesa total)"
+  },
+  "resumo_executivo": "No mês de outubro de 2026, a CloudPonto apresentou um prejuízo de US$ 10.250,00. A receita total foi de US$ 206.800,00, superando a meta estabelecida. As despesas totais alcançaram US$ 217.050,00.",
+  "destaques_positivos": [
+    "A receita total superou a meta de US$ 200.000,00, atingindo 103,4%.",
+    "Houve um crescimento de 8,2% na receita em relação ao mês anterior.",
+    "A receita recorrente mensal continua em crescimento, indicando uma boa aceitação do mercado."
+  ],
+  "pontos_de_atencao": [
+    "O resultado do mês foi um prejuízo de US$ 10.250,00, refletindo a necessidade de controle de despesas.",
+    "As despesas totais aumentaram 1,0% em relação ao mês anterior, o que pode impactar a sustentabilidade financeira.",
+    "A maior despesa foi com pessoal, representando 55,9% da despesa total."
+  ],
+  "recomendacoes": [
+    "Avaliar estratégias para otimização de custos, especialmente na área de pessoal.",
+    "Monitorar de perto as despesas de vendas e marketing para garantir que o crescimento da receita se mantenha sustentável.",
+    "Considerar ajustes nas projeções de queima de caixa para alinhar com o crescimento esperado."
+  ],
+  "observacoes": {
+    "campos_ausentes": [],
+    "instrucoes_em_dados": null,
+    "valores_atipicos": null
+  }
+}

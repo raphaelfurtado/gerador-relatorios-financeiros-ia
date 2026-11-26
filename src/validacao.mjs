@@ -125,7 +125,8 @@ export function jaccard(a, b) {
   const conj = (t) => new Set(normalizar(t).replace(/[^\p{L}\d\s]/gu, " ").split(/\s+/).filter(Boolean));
   const A = conj(a), B = conj(b);
   const inter = [...A].filter((x) => B.has(x)).length;
-  return inter / (A.size + B.size - inter);
+  const uniao = A.size + B.size - inter;
+  return uniao ? inter / uniao : 1; // dois textos vazios são idênticos
 }
 
 // Seção 6 coerente com os dados: registra o que falta, não acusa ausência do que existe, "Nenhuma." só sozinha.

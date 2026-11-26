@@ -1,0 +1,57 @@
+{
+  "versao_prompt": "v5",
+  "modelo": "gpt-4o-mini",
+  "empresa": "Clínica Sorriso Pleno",
+  "setor": "Saúde (odontologia)",
+  "periodo": "10/2026",
+  "moeda": "BRL",
+  "publico_alvo": "diretoria",
+  "indicadores": {
+    "receita_total": 136150,
+    "despesa_total": 105830,
+    "resultado": 30320,
+    "margem_liquida_pct": 22.27,
+    "variacao_receita_pct": null,
+    "variacao_despesa_pct": null,
+    "atingimento_meta_pct": null,
+    "maior_despesa": {
+      "item": "pessoal",
+      "valor": 51200,
+      "participacao_pct": 48.38
+    }
+  },
+  "indicadores_formatados": {
+    "Receita total": "R$ 136.150,00",
+    "Despesa total": "R$ 105.830,00",
+    "Resultado": "R$ 30.320,00",
+    "Margem líquida": "22,3%",
+    "Variação da receita vs. mês anterior": "N/D",
+    "Variação da despesa vs. mês anterior": "N/D",
+    "Atingimento da meta de receita": "N/D",
+    "Maior despesa": "Pessoal (48,4% da despesa total)"
+  },
+  "resumo_executivo": "No mês de outubro de 2026, a Clínica Sorriso Pleno apresentou um resultado positivo de R$ 30.320,00. A margem líquida foi de 22,3%.",
+  "destaques_positivos": [
+    "Receita total alcançada foi de R$ 136.150,00, demonstrando um bom desempenho no mês.",
+    "O resultado positivo indica uma gestão eficiente das receitas e despesas.",
+    "A margem líquida de 22,3% é um indicativo de rentabilidade saudável."
+  ],
+  "pontos_de_atencao": [
+    "As despesas totais foram de R$ 105.830,00, representando uma parte significativa da receita.",
+    "O maior componente de despesa foi com pessoal, que corresponde a 48,4% do total.",
+    "Primeiro mês no novo sistema de gestão; o histórico dos meses anteriores não foi migrado."
+  ],
+  "recomendacoes": [
+    "Monitorar de perto as despesas com pessoal para garantir que não comprometam a rentabilidade.",
+    "Avaliar a eficiência do novo sistema de gestão e sua influência nas operações financeiras.",
+    "Estabelecer metas de receita para os próximos meses assim que o histórico estiver disponível."
+  ],
+  "observacoes": {
+    "campos_ausentes": [
+      "periodo_anterior",
+      "meta_receita"
+    ],
+    "instrucoes_em_dados": null,
+    "valores_atipicos": null
+  }
+}
